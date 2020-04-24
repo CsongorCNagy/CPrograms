@@ -6,6 +6,8 @@ class Variables
     {
         int number = 5;
         int aVal = 7;
-        Console.WriteLine("My value is: {1} and {1}", number, aVal);
+        float myFloat = 12.765f;
+        char myCharacter = 'A'; 
+        Console.WriteLine("My value is: {0} and {1}", number, myCharacter);
     }
 }
