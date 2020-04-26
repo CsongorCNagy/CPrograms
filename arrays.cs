@@ -18,9 +18,10 @@ class ScoreProcessing
             scores[i] = Convert.ToInt32(Console.ReadLine());
         }
         Console.WriteLine("Processing here:");
-        for (int i = 0; i < scores.Length; i++)
+
+        foreach (int box in scores)
         {
-            Console.WriteLine("{0}", scores[i]/numScores * 100);
+            Console.WriteLine("{0}", box/numScores *100);
         }
     }
 }
