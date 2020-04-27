@@ -12,28 +12,19 @@ class Challenge4
 
         foreach(char c in text)
         {
-            if (c == ' ')
+            int letter = Convert.ToInt32(c);
+            if (c == ' ' || (c+shift) == ' ')
                 Console.Write(" ");
             else
             {
-                char letter = c;
-                int changed = letter+change;
-            
-
-                if ((char)changed<='A' && (char)changed>='Z')
-                {
-                    Console.Write("{0}", changed);
-                }
-                else if((char)changed > 'A')
-
-
-                Console.Write("{0}", (char)(l+shift)
+                if ((letter+shift) > 'Z' && (letter+shift) < 'a')
+                    letter -= 26;
+                else if ((letter+shift) > 'z')
+                    letter -= 26;
+                
+                Console.Write("{0}", (char)(letter+shift));
             }
         }
+        Console.WriteLine("");
     }
 }
-
-
-/*
- if ((l+shift)>)
-*/
