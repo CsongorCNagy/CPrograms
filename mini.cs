@@ -9,13 +9,16 @@ class CheapestPrice
         float[] eggPrices = {4.50f, 3.65f, 2.90f, 4.10f};
 
         Console.Clear();
-        MinCalc(breadPrices, "bread");
-        MinCalc(milkPrices, "milk");
-        MinCalc(eggPrices, "egg");
+        float minBread = MaxCalc(breadPrices) - MinCalc(breadPrices);
+        float minMilk = MaxCalc(milkPrices) - MinCalc(milkPrices);
+        float minEggs = MaxCalc(eggPrices) - MinCalc(eggPrices);
 
+        Console.WriteLine("Difference between cheapest and most expensive bread is ${0}.", minBread);
+        Console.WriteLine("Difference between cheapest and most expensive milk is ${0}.", minMilk);
+        Console.WriteLine("Difference between cheapest and most expensive eggs is ${0}.", minEggs);
     }
 
-    static void MinCalc(float[] numbers, string typeP)
+    static float MinCalc(float[] numbers)
     {
         float minimum = numbers[0];
         for (int i = 1; i < numbers.Length; i++)
@@ -23,6 +26,16 @@ class CheapestPrice
             if (minimum > numbers[i])
                 minimum = numbers[i];
         }
-        Console.WriteLine("Lowest price of {0} is ${1}.", typeP, minimum);
+        return minimum;
+    }
+    static float MaxCalc(float[] numbers)
+    {
+        float maximum = numbers[0];
+        for (int i = 1; i < numbers.Length; i++)
+        {
+            if (maximum < numbers[i])
+                maximum = numbers[i];
+        }
+        return maximum;
     }
 }
