@@ -1,19 +1,29 @@
 using System;
+using System.Net;
 
 class BreakStatement
 {
     static void Main()
     {
-        string input;
-        Console.Clear();
-        while(true)
+        string word;
+        string url;
+        Console.WriteLine("Search Word:");
+        word = Console.ReadLine();
+        Console.WriteLine("URL");
+        url = Console.ReadLine();
+
+        WebClient wc = new WebClient();
+        
+        string webText = wc.DownloadString(url);
+
+        string[] words = webText.Split(' ');
+        foreach (string w in words)
         {
-            Console.WriteLine("Do you want to quid?");
-            input = Console.ReadLine();
-            
-            if (input == "y")
+            if (w.ToUpper() == word.ToUpper())
+            {
+                Console.WriteLine("{0} found.", word);
                 break;
+            }
         }
-        Console.WriteLine("Okay Quitting Now.");
     }
 }
