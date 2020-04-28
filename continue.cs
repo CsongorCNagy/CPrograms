@@ -4,12 +4,23 @@ class ContinueStatement
 {
     static void Main()
     {
+        string fileContent = Console.In.ReadToEnd();
         Console.Clear();
-        for (int i = 0; i < 20; i++)
+
+        string[] lines = fileContent.Split("\n");
+
+        foreach (string l in lines)
         {
-            if (i % 2 == 1)
+            if(l.IndexOf("NULL") >= 0 || l == lines[0])
+            {
                 continue;
-            Console.WriteLine("{0} is even.", i);
+            }
+            string[] fields = l.Split(',');
+            float lat = Convert.ToSingle(fields[2]);
+            if (lat < 0)
+            {
+                Console.WriteLine("{0}", fields[1]);
+            }
         }
     }
 }
