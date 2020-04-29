@@ -9,6 +9,7 @@ class CarCollection
         string model;
         int year;
         string color;
+        string regNumb;
 
         for (int i = 0; i < mycars.Length; i++)
         {
@@ -21,8 +22,10 @@ class CarCollection
             year = Convert.ToInt32(Console.ReadLine());
             Console.Write("Color: ");
             color = Console.ReadLine();
+            Console.WriteLine("Registration number: ");
+            regNumb = Console.ReadLine();
 
-            mycars[i] = new CarDetails(make, model, year, color);
+            mycars[i] = new CarDetails(make, model, year, color, regNumb);
         }
 
         Console.Clear();

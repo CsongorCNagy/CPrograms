@@ -6,13 +6,15 @@ class CarDetails
     string model;
     int year;
     string color;
+    string regNumb;
 
-    public CarDetails(string m, string mod, int y, string c)
+    public CarDetails(string m, string mod, int y, string c, string r)
     {
         make = m;
         model = mod;
         year = y;
         color = c;
+        regNumb = r;
     }
 
     public void PrintDetails()
@@ -21,6 +23,7 @@ class CarDetails
         Console.WriteLine("Model: " + model);
         Console.WriteLine("Year: " + year);
         Console.WriteLine("Color: " + color);
+        Console.WriteLine("Regitration number: " + regNumb);
         Console.WriteLine("========================");
     }
 }
