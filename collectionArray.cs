@@ -4,7 +4,7 @@ class CarCollection
 {
     static void Main()
     {
-        CarDetails[] mycars = new CarDetails[2];
+        CarDetails[] mycars = new CarDetails[10];
         string make;
         string model;
         int year;
