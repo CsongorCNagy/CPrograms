@@ -7,12 +7,12 @@ public class Person
     string phone;
     float height;
 
-    public Person(string n, string a)
+    public Person(string n, string a, string p, float h)
     {
         name = n;
         address = a;
-        phone = "0786543786";
-        height = 180;
+        phone = p;
+        height = h;
     }
 
     public void PrintDetails()
