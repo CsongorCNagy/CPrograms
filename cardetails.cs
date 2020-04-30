@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 class CarDetails
 {
@@ -25,5 +26,16 @@ class CarDetails
         Console.WriteLine("Color: " + color);
         Console.WriteLine("Regitration number: " + regNumb);
         Console.WriteLine("========================");
+    }
+
+    public void PrintDetails(string filename)
+    {
+        File.AppendAllText(filename, "Make: " + make + "\n");
+        File.AppendAllText(filename, "Year: " + year + "\n");
+        File.AppendAllText(filename, "Color: " + color + "\n");
+        File.AppendAllText(filename, "Model: " + model + "\n");
+        File.AppendAllText(filename, "Regitration number: " + regNumb + "\n");
+        File.AppendAllText(filename, "========================\n");
+
     }
 }
