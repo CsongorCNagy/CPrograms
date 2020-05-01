@@ -7,27 +7,57 @@ public class Hangman
     {
         string[] words = File.ReadAllLines("words.txt");
         string guess = "";
+        char[] guessWord;
+        int wrong = 0;
 
         Random rnd = new Random();
         int wordNum = rnd.Next(0, words.Length);
 
         Console.Clear();
-        Console.WriteLine(words[wordNum]);
-
-        Console.Write("Guess a letter: ");
-        guess = Console.ReadLine().ToLower();
-
-        foreach (char c in words[wordNum].ToLower())
+        //Console.WriteLine(words[wordNum]);
+        string wordToGuess = words[wordNum].ToLower();
+        guessWord = new char[wordToGuess.Length];
+        for(int i = 0; i < guessWord.Length; i++)
         {
-            if(guess[0] == c)
-                Console.Write(guess);
-            else
-                Console.Write("_");
+            guessWord[i] = '_';
         }
 
-        Console.WriteLine();
+        while(new string(guessWord) != wordToGuess && wrong < 10)
+        {
+            Console.Write("Guess a letter: ");
+            guess = Console.ReadLine().ToLower();
+            Console.Clear();
 
-        PrintHangman(10);
+            bool found = false;
+            for(int i = 0; i < wordToGuess.Length; i++)
+            {
+                if(guess[0] == wordToGuess[i])
+                {
+                    guessWord[i] = guess[0];
+                    found = true;
+                }
+            }
+            if(!found)
+            {
+                wrong++;
+                Console.WriteLine("Incorrect guess.");
+            }
+
+            Console.WriteLine(new string(guessWord));
+            Console.WriteLine();
+
+            PrintHangman(wrong);
+        }
+
+        if(wrong >= 10)
+        {
+            Console.WriteLine("You lost.");
+            Console.WriteLine("The word was: " + words[wordNum]);
+        }
+        else
+        {
+            Console.WriteLine("You Won.");
+        }
     }
 
     static void PrintHangman(int wrongTimes)
